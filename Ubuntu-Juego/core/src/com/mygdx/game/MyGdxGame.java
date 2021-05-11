@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.sun.corba.se.impl.orbutil.DenseIntMapImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,7 @@ public class MyGdxGame extends ApplicationAdapter {
                 if (Utils.solapan(disparo.x, disparo.y, disparo.w, disparo.h, enemigo.x, enemigo.y, enemigo.w, enemigo.h)) {
                     disparosAEliminar.add(disparo);
                     enemigosAEliminar.add(enemigo);
-                    jugador.puntos++;
+                    jugador.puntos+= 10;
                     break;
                 }
             }
@@ -69,11 +68,15 @@ public class MyGdxGame extends ApplicationAdapter {
         for (Enemigo enemigo : enemigosAEliminar){
 
 
+
             //----------------------ANIMACION-MUERTE-----------------------------------
-            if(enemigo.ani){
+            if(enemigo.boom){
+
+
                 enemigos.remove(enemigo);
 
             }
+            enemigo.boomir();
             //------------------------ANIMACION-MUERTE---------------------------------
 
 
@@ -94,7 +97,14 @@ public class MyGdxGame extends ApplicationAdapter {
         batch.begin();
         fondo.render(batch);
         jugador.render(batch);
-        for (Enemigo enemigo : enemigos) enemigo.render(batch);  // enemigos.forEach(e -> e.render(batch));
+        for (Enemigo enemigo : enemigos){
+
+            if(enemigo.boom){
+                bitmapFont.draw(batch, "+10" , enemigo.x, enemigo.y);
+            }
+            enemigo.render(batch);  // enemigos.forEach(e -> e.render(batch));
+
+        }
         bitmapFont.draw(batch, "" + jugador.vidas, 590, 440);
         bitmapFont.draw(batch, "" + jugador.puntos, 30, 440);
         if(jugador.vidas == 0) bitmapFont.draw(batch, "GAME OVER" , 240, 280);
