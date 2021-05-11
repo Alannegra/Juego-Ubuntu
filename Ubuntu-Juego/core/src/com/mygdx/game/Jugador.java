@@ -39,6 +39,8 @@ public class Jugador {
 
         if (x < 0) x = 0;
         if (y < 0) y = 0;
+        if (x > 550) x = 550;
+        if (y > 440) y = 440;
 
         if (temporizadorRespawn.suena()) {
             muerto = false;

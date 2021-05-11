@@ -51,6 +51,11 @@ public class Enemigo {
         }
 
 
+        if (y < 0) y = 0;
+
+        if (y > 390) y = 390;
+
+
 
     }
 

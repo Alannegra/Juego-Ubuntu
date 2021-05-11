@@ -4,13 +4,13 @@ com/mygdx/game/Animacion.java
  com.mygdx.game.Animacion
 com/mygdx/game/Disparo.java
  com.mygdx.game.Disparo
-com/mygdx/game/Fondo.java
- com.mygdx.game.Fondo
+com/mygdx/game/Enemigo.java
+ com.mygdx.game.Enemigo
 com/mygdx/game/Temporizador.java
  com.mygdx.game.Temporizador
 com/mygdx/game/Jugador.java
  com.mygdx.game.Jugador
+com/mygdx/game/Fondo.java
+ com.mygdx.game.Fondo
 com/mygdx/game/MyGdxGame.java
  com.mygdx.game.MyGdxGame
-com/mygdx/game/Enemigo.java
- com.mygdx.game.Enemigo

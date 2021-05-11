@@ -100,7 +100,7 @@ public class MyGdxGame extends ApplicationAdapter {
         for (Enemigo enemigo : enemigos){
 
             if(enemigo.boom){
-                bitmapFont.draw(batch, "+10" , enemigo.x, enemigo.y);
+                bitmapFont.draw(batch, "+10" , enemigo.x + 35, enemigo.y);
             }
             enemigo.render(batch);  // enemigos.forEach(e -> e.render(batch));
 
