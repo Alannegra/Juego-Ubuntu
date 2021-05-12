@@ -11,8 +11,13 @@ public class Fondo {
 
 
     public void render(SpriteBatch batch) {
+
         batch.draw(texture, x, y, 640, 480);
+
     }
+
+
+
 
 
 

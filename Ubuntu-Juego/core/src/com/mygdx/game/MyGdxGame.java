@@ -14,12 +14,15 @@ import java.util.List;
 public class MyGdxGame extends ApplicationAdapter {
     SpriteBatch batch;
     BitmapFont bitmapFont;
+
     Fondo fondo;
     Jugador jugador;
     List<Enemigo> enemigos = new ArrayList<>();
     List<Disparo> disparosAEliminar = new ArrayList<>();
     List<Enemigo> enemigosAEliminar = new ArrayList<>();
     Temporizador temporizadorNuevoAlien = new Temporizador(120);
+    private ScoreBoard scoreboard;
+    private boolean gameover;
 
     @Override
     public void create() {
@@ -31,6 +34,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
         fondo = new Fondo();
         jugador = new Jugador();
+
+
     }
 
     void update() {
@@ -38,7 +43,9 @@ public class MyGdxGame extends ApplicationAdapter {
 
         if (temporizadorNuevoAlien.suena()) enemigos.add(new Enemigo());
 
-        jugador.update();
+        if(!gameover) {
+            jugador.update();
+        }
 
         for (Enemigo enemigo : enemigos) enemigo.update();              // enemigos.forEach(Enemigo::update);
 
@@ -55,6 +62,10 @@ public class MyGdxGame extends ApplicationAdapter {
             if (!jugador.muerto && Utils.solapan(enemigo.x, enemigo.y, enemigo.w, enemigo.h, jugador.x, jugador.y, jugador.w, jugador.h)) {
                 jugador.morir();
                 enemigo.morir();
+                if (jugador.vidas == 2){
+                    gameover = true;
+                    scoreboard.guardarPuntuacion(jugador.puntos);
+                }
             }
 
             if (enemigo.x < -enemigo.w) enemigosAEliminar.add(enemigo);
@@ -107,6 +118,12 @@ public class MyGdxGame extends ApplicationAdapter {
         }
         bitmapFont.draw(batch, "" + jugador.vidas, 590, 440);
         bitmapFont.draw(batch, "" + jugador.puntos, 30, 440);
+
+        if (gameover){
+
+            scoreboard.render(batch, bitmapFont);
+        }
+
         if(jugador.vidas == 0) bitmapFont.draw(batch, "GAME OVER" , 240, 280);
 
         for (Enemigo enemigo : enemigosAEliminar){
