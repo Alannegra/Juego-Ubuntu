@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,14 +25,23 @@ public class ScoreBoard {
     }
 
     List<Score> scoreList = new ArrayList<>();
+    int contador = 0;
 
     void render(SpriteBatch batch, BitmapFont font){
         font.draw(batch, "SCOREBOARD", 200, 460);
 
+
+
         for (int i = 0; i < 5; i++) {
-            font.draw(batch, scoreList.get(i).nombre, 100, 400-i*30);
-            font.draw(batch, ""+scoreList.get(i).puntuacion, 300, 400-i*30);
+
+
+           font.draw(batch, scoreList.get(i).nombre, 100, 400-i*30);
+           font.draw(batch, ""+scoreList.get(i).puntuacion, 300, 400-i*30);
+
+
         }
+
+
     }
 
     void guardarPuntuacion(int puntuacion){
@@ -57,6 +67,7 @@ public class ScoreBoard {
                 int puntos = scanner.nextInt();
 
                 scoreList.add(new Score(nombre, puntos));
+
             }
 
 

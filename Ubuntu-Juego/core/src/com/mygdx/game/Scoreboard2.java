@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ScoreBoard2 {
+public class Scoreboard2 {
 
     private final Stage stage;
-    private final Skin skin;
+    private static Skin skin;
 
     static class Score {
         String name;
@@ -33,7 +33,7 @@ public class ScoreBoard2 {
 
     List<Score> scoreList = new ArrayList<>();
 
-    ScoreBoard2(){
+    Scoreboard2(){
         stage = new Stage();
         skin = new Skin(Gdx.files.internal("core/assets/skin/uiskin.json"));
     }

@@ -16,8 +16,6 @@ public class Enemigo {
     boolean muerto,ani = false;
     boolean boom = false;
 
-    Jugador jugador;
-
     Temporizador temporizadorRespawn = new Temporizador(60, false);
 
     Enemigo() {
@@ -27,8 +25,6 @@ public class Enemigo {
         h = 48 * 2;
         vx = -2;
         vy = 0;
-
-        jugador = new Jugador();
     }
 
     public void update() {
@@ -45,23 +41,12 @@ public class Enemigo {
             muerto = false;
         }
 
-        if (muerto){
-            y = jugador.y;
-            x = jugador.x;
-        }
-
-
         if (y < 0) y = 0;
 
         if (y > 390) y = 390;
-
-
-
     }
 
     void render(SpriteBatch batch) {
-
-
 
         if (muerto){
             //X y Y DEL JUGADOR
@@ -75,17 +60,17 @@ public class Enemigo {
 
 
         //batch.draw(animacion.getFrame(Temporizador.tiempoJuego), x, y, w, h);
-
-
     }
 
 
-
-
-    public void morir() {
+    public void morir(Jugador jugador) {
         muerto = true;
         temporizadorRespawn.activar();
 
+        if (muerto){
+            y = jugador.y;
+            x = jugador.x;
+        }
     }
 
 

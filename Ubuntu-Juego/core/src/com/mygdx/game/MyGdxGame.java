@@ -34,8 +34,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
         fondo = new Fondo();
         jugador = new Jugador();
-
-
+        scoreboard = new ScoreBoard();
     }
 
     void update() {
@@ -61,8 +60,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
             if (!jugador.muerto && Utils.solapan(enemigo.x, enemigo.y, enemigo.w, enemigo.h, jugador.x, jugador.y, jugador.w, jugador.h)) {
                 jugador.morir();
-                enemigo.morir();
-                if (jugador.vidas == 2){
+                enemigo.morir(jugador);
+                if (jugador.vidas == 0){
                     gameover = true;
                     scoreboard.guardarPuntuacion(jugador.puntos);
                 }
@@ -124,7 +123,7 @@ public class MyGdxGame extends ApplicationAdapter {
             scoreboard.render(batch, bitmapFont);
         }
 
-        if(jugador.vidas == 0) bitmapFont.draw(batch, "GAME OVER" , 240, 280);
+        if(jugador.vidas == 0) bitmapFont.draw(batch, "GAME OVER" , 240, 200);
 
         for (Enemigo enemigo : enemigosAEliminar){
 

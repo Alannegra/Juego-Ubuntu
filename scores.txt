@@ -1,0 +1,6 @@
+alan,270
+alan,0
+alan,10
+alan,90
+alan,60
+alan,20
