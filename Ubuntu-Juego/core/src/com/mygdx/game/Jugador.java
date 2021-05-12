@@ -17,6 +17,8 @@ public class Jugador {
     Temporizador temporizadorFireRate = new Temporizador(20);
     Temporizador temporizadorRespawn = new Temporizador(120, false);
 
+    Fondo fondo;
+
     Jugador() {
         x = 100;
         y = 100;
@@ -34,7 +36,7 @@ public class Jugador {
         if (Gdx.input.isKeyPressed(Input.Keys.S)) y -= v;
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && temporizadorFireRate.suena() && !muerto) {
-            disparos.add(new Disparo(x + w / 2, y + h));
+            disparos.add(new Disparo(x + w / 2 + 10, y + h -25));
         }
 
         if (x < 0) x = 0;
