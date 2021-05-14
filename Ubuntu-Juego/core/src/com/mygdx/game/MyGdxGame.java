@@ -15,11 +15,14 @@ public class MyGdxGame extends ApplicationAdapter {
     SpriteBatch batch;
     BitmapFont bitmapFont;
 
-    Fondo fondo;
     Jugador jugador;
+    List<Fondo> fondos = new ArrayList<>();
+    Fondo fondo;
+
     List<Enemigo> enemigos = new ArrayList<>();
     List<Disparo> disparosAEliminar = new ArrayList<>();
     List<Enemigo> enemigosAEliminar = new ArrayList<>();
+
     Temporizador temporizadorNuevoAlien = new Temporizador(120);
     private ScoreBoard scoreboard;
     private boolean gameover;
@@ -32,13 +35,33 @@ public class MyGdxGame extends ApplicationAdapter {
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         bitmapFont.getData().setScale(2f);
 
-        fondo = new Fondo();
+
+
         jugador = new Jugador();
         scoreboard = new ScoreBoard();
+
+        fondos.add(new Fondo());
     }
 
     void update() {
+
+
         Temporizador.tiempoJuego += 1;
+
+
+        for (Fondo fondo : fondos) fondo.update();
+
+        if (fondos.get(0).z == 0){
+
+            fondos.remove(0);
+            fondos.add(new Fondo());
+
+
+        }
+
+
+
+
 
         if (temporizadorNuevoAlien.suena()) enemigos.add(new Enemigo());
 
@@ -54,6 +77,11 @@ public class MyGdxGame extends ApplicationAdapter {
                     disparosAEliminar.add(disparo);
                     enemigosAEliminar.add(enemigo);
                     jugador.puntos+= 10;
+
+                    
+
+
+
                     break;
                 }
             }
@@ -105,8 +133,11 @@ public class MyGdxGame extends ApplicationAdapter {
         update();
 
         batch.begin();
-        fondo.render(batch);
+
+        for (Fondo fondo : fondos) fondo.render(batch);
+
         jugador.render(batch);
+
         for (Enemigo enemigo : enemigos){
 
             if(enemigo.boom){
