@@ -11,7 +11,9 @@ public class Enemigo {
 
 
     float x, y, w, h, vx, vy;
-    Temporizador cambioVelocidad = new Temporizador(30);
+    static float z = 1;
+
+    Temporizador cambioVelocidad = new Temporizador(20);
 
     boolean muerto,ani = false;
     boolean boom = false;
@@ -33,7 +35,7 @@ public class Enemigo {
 
         if (cambioVelocidad.suena()) {
             vy = Utils.random.nextInt(3) - 1;
-            vx = -(Utils.random.nextInt(3)+1);
+            vx = -(Utils.random.nextInt(3)+z);
         }
 
 
@@ -71,6 +73,12 @@ public class Enemigo {
             y = jugador.y;
             x = jugador.x;
         }
+    }
+
+    public void strake(float quitar) {
+
+        z += quitar ;
+
     }
 
 

@@ -57,6 +57,14 @@ public class Jugador {
         for (Disparo disparo : disparos) disparo.render(batch);
     }
 
+
+
+    public void strake(float quitar) {
+
+        v += quitar ;
+
+    }
+
     public void morir() {
         if(vidas > 0)vidas--;
 

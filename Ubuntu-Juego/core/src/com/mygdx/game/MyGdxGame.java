@@ -78,8 +78,13 @@ public class MyGdxGame extends ApplicationAdapter {
                     disparosAEliminar.add(disparo);
                     enemigosAEliminar.add(enemigo);
                     jugador.puntos+= 10;
+                    jugador.strake(1);
 
-                    for (Fondo fondo : fondos) fondo.quitar +=1;
+                    for (Fondo fondo : fondos){
+                        fondo.quitar +=1;
+
+                        enemigo.strake(1);
+                    }
 
                     break;
                 }

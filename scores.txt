@@ -12,3 +12,6 @@ alan,0
 alan,0
 alan,0
 alan,160
+alan,170
+alan,120
+alan,120
