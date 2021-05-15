@@ -14,9 +14,9 @@ com/mygdx/game/Disparo.java
  com.mygdx.game.Disparo
 com/mygdx/game/Jugador.java
  com.mygdx.game.Jugador
-com/mygdx/game/Fondo.java
- com.mygdx.game.Fondo
 com/mygdx/game/Enemigo.java
  com.mygdx.game.Enemigo
+com/mygdx/game/Fondo.java
+ com.mygdx.game.Fondo
 com/mygdx/game/MyGdxGame.java
  com.mygdx.game.MyGdxGame

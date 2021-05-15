@@ -17,7 +17,7 @@ public class Jugador {
     Temporizador temporizadorFireRate = new Temporizador(20);
     Temporizador temporizadorRespawn = new Temporizador(120, false);
 
-    Fondo fondo;
+
 
     Jugador() {
         x = 100;

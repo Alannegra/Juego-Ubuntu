@@ -8,7 +8,7 @@ public class Fondo {
     Texture texture2 = new Texture("fondo.jpg");
     float x,z ;
     int y ;
-    float quitar = 10;
+    static float quitar = 1 ;
 
     Temporizador cambioVelocidad = new Temporizador(1,true);
 
@@ -24,45 +24,22 @@ public class Fondo {
 
 
 
+
     }
 
     public void update(){
-
-
-
-
         if (cambioVelocidad.suena()) {
-
-
             z -= quitar;
             x -= quitar;
-
-
         }
 
     }
 
     public void render(SpriteBatch batch) {
-
-
-
-
-
-
             batch.draw(texture, x, y, 640, 480);
-
-
-
             batch.draw(texture, z, y, 640, 480);
-
-
-
-
-
-
-
-
     }
+
 
 
 

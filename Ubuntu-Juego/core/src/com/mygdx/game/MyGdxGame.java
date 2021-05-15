@@ -51,7 +51,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
         for (Fondo fondo : fondos) fondo.update();
 
-        if (fondos.get(0).z == 0){
+
+        if (fondos.get(0).z <= 0){
 
             fondos.remove(0);
             fondos.add(new Fondo());
@@ -78,9 +79,7 @@ public class MyGdxGame extends ApplicationAdapter {
                     enemigosAEliminar.add(enemigo);
                     jugador.puntos+= 10;
 
-                    
-
-
+                    for (Fondo fondo : fondos) fondo.quitar +=1;
 
                     break;
                 }
