@@ -1,18 +1,18 @@
 package com.mygdx.game;
 
 public class Temporizador {
-    static int tiempoJuego;
-    int alarma;
-    int frecuencia;
+    static float tiempoJuego;
+    float alarma;
+    float frecuencia;
     boolean repetir = true;
     boolean activo = true;
 
-    Temporizador(int frecuencia) {
+    Temporizador(float frecuencia) {
         this.frecuencia = frecuencia;
         alarma = tiempoJuego + frecuencia;
     }
 
-    Temporizador(int frecuencia, boolean repetir) {
+    Temporizador(float frecuencia, boolean repetir) {
         this.frecuencia = frecuencia;
         alarma = tiempoJuego + frecuencia;
         this.repetir = repetir;

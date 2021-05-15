@@ -16,7 +16,9 @@ public class Disparo {
     }
 
     void update() {
+
         x += v;
+
     }
 
     public void render(SpriteBatch batch) {

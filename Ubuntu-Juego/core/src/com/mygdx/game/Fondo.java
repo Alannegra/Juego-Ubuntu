@@ -9,6 +9,7 @@ public class Fondo {
     float x,z ;
     int y ;
     static float quitar = 1 ;
+    boolean gameover = true;
 
     Temporizador cambioVelocidad = new Temporizador(1,true);
 
@@ -28,10 +29,14 @@ public class Fondo {
     }
 
     public void update(){
-        if (cambioVelocidad.suena()) {
+
+
+        if (gameover && cambioVelocidad.suena()) {
             z -= quitar;
             x -= quitar;
         }
+
+
 
     }
 

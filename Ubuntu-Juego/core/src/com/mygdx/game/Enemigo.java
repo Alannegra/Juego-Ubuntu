@@ -12,11 +12,13 @@ public class Enemigo {
 
     float x, y, w, h, vx, vy;
     static float z = 1;
+    int Z;
 
-    Temporizador cambioVelocidad = new Temporizador(20);
+    Temporizador cambioVelocidad = new Temporizador(20-z);
 
     boolean muerto,ani = false;
     boolean boom = false;
+    boolean palanca = false;
 
     Temporizador temporizadorRespawn = new Temporizador(60, false);
 
@@ -32,10 +34,24 @@ public class Enemigo {
     public void update() {
         y += vy;
         x += vx;
-
+        Z = (int)z;
         if (cambioVelocidad.suena()) {
-            vy = Utils.random.nextInt(3) - 1;
+
+            if(palanca){
+                vy = -Utils.random.nextInt( Z + Z/2) + z;
+                palanca = false;
+            }else{
+                vy = Utils.random.nextInt( Z + Z/2) - z;
+                palanca = true;
+            }
+
+
+
             vx = -(Utils.random.nextInt(3)+z);
+
+
+
+
         }
 
 
