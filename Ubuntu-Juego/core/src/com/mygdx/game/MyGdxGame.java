@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+// https://github.com/uriloop?tab=repositories
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -16,7 +18,7 @@ public class MyGdxGame extends ApplicationAdapter {
     BitmapFont bitmapFont;
 
     Jugador jugador;
-    List<Fondo> fondos = new ArrayList<>();
+
     Fondo fondo;
 
     List<Enemigo> enemigos = new ArrayList<>();
@@ -41,29 +43,15 @@ public class MyGdxGame extends ApplicationAdapter {
         jugador = new Jugador();
         scoreboard = new ScoreBoard();
 
-        fondos.add(new Fondo());
+        fondo = new Fondo();
 
     }
 
     void update() {
 
-
-
         Temporizador.tiempoJuego += 1;
 
-
-        for (Fondo fondo : fondos) fondo.update();
-
-
-        if (fondos.get(0).z <= 0){
-
-            fondos.remove(0);
-            fondos.add(new Fondo());
-
-        }
-
-
-
+        fondo.update();
 
 
         if (temporizadorNuevoAlien.suena()) enemigos.add(new Enemigo());
@@ -86,12 +74,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
                     enemigo.strake(0.5f);
 
-                    for (Fondo fondo : fondos){
-                        fondo.quitar +=0.5;
-
-
-
-                    }
+                    fondo.strake();
 
                     break;
                 }
@@ -103,7 +86,7 @@ public class MyGdxGame extends ApplicationAdapter {
                 if (jugador.vidas == 0){
                     gameover = true;
 
-                    fondos.get(0).gameover = false ;
+                    fondo.gameover();
                     scoreboard.guardarPuntuacion(jugador.puntos);
                 }
             }
@@ -147,7 +130,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
         batch.begin();
 
-        for (Fondo fondo : fondos) fondo.render(batch);
+        fondo.render(batch);
 
         jugador.render(batch);
 
