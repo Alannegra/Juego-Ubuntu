@@ -26,7 +26,7 @@ public class MyGdxGame extends ApplicationAdapter {
     List<Enemigo> enemigosAEliminar = new ArrayList<>();
 
 
-    Temporizador temporizadorNuevoAlien = new Temporizador(60);
+    Temporizador temporizadorNuevoAlien;
     private ScoreBoard scoreboard;
     private boolean gameover;
 
@@ -40,11 +40,20 @@ public class MyGdxGame extends ApplicationAdapter {
 
 
 
+        inicializarJuego();
+
+    }
+
+    void inicializarJuego(){
+        fondo = new Fondo();
         jugador = new Jugador();
+        enemigos = new ArrayList<>();
+        temporizadorNuevoAlien = new Temporizador(120);
+        disparosAEliminar = new ArrayList<>();
+        enemigosAEliminar = new ArrayList<>();
         scoreboard = new ScoreBoard();
 
-        fondo = new Fondo();
-
+        gameover = false;
     }
 
     void update() {
@@ -119,6 +128,17 @@ public class MyGdxGame extends ApplicationAdapter {
         // enemigosAEliminar.forEach(enemigo -> enemigos.remove(enemigo));
         disparosAEliminar.clear();
         enemigosAEliminar.clear();
+
+        if(gameover) {
+            int result = scoreboard.update(jugador.puntos);
+            if(result == 1) {
+                inicializarJuego();
+            } else if (result == 2) {
+                Gdx.app.exit();
+            }
+        }
+
+
     }
 
     @Override

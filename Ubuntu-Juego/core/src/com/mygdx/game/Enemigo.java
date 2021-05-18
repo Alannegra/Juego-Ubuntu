@@ -72,6 +72,7 @@ public class Enemigo {
         }else if(boom){
 
             batch.draw(animacion4.getFrame(Temporizador.tiempoJuego), x, y, w, h);
+
         }else{
             batch.draw(animacion.getFrame(Temporizador.tiempoJuego), x, y, w, h);
         }

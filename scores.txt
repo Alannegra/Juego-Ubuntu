@@ -41,3 +41,12 @@ alan,170
 alan,410
 alan,260
 alan,260
+alan,300
+AAA,370
+AAA,270
+AAA,180
+AZH,190
+AAA,200
+AAB,200
+AAA,40
+BBB,40

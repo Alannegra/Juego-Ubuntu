@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Scoreboard2 {
+public class ScoreBoard2 {
 
     private final Stage stage;
-    private static Skin skin;
+    private final Skin skin;
 
     static class Score {
         String name;
@@ -33,7 +33,7 @@ public class Scoreboard2 {
 
     List<Score> scoreList = new ArrayList<>();
 
-    Scoreboard2(){
+    ScoreBoard2(){
         stage = new Stage();
         skin = new Skin(Gdx.files.internal("core/assets/skin/uiskin.json"));
     }
@@ -46,7 +46,7 @@ public class Scoreboard2 {
     public void saveScore(int puntos) {
         try {
             FileWriter fileWriter = new FileWriter("scores.txt", true);
-            fileWriter.append("jugador:" + puntos +"\n");
+            fileWriter.append("jugador," + puntos +"\n");
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class Scoreboard2 {
     public void loadScores(){
         try {
             Scanner scanner = new Scanner(new File("scores.txt"));
-            scanner.useDelimiter(":|\n");
+            scanner.useDelimiter(",|\n");
             scoreList.clear();
             while(scanner.hasNext()) {
                 String name = scanner.next();
