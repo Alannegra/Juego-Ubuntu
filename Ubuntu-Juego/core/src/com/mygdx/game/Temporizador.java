@@ -31,4 +31,13 @@ public class Temporizador {
         activo = true;
         alarma = tiempoJuego + frecuencia;
     }
+
+    public void finalizar() {
+
+        activo = false;
+        alarma = tiempoJuego + frecuencia;
+
+    }
+
+
 }

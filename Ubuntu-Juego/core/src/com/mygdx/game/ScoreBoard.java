@@ -33,6 +33,7 @@ public class ScoreBoard {
     private boolean saved;
 
     List<Score> scoreList = new ArrayList<>();
+    List<Score> ordenador = new ArrayList<>();
 
     /**
      * @param puntos
@@ -41,6 +42,9 @@ public class ScoreBoard {
      *         1 = replay
      *         2 = exit
      */
+
+
+
     int update(int puntos){
         if(index < 3 && Gdx.input.isKeyJustPressed(Input.Keys.D)) {
             nombre[index]++;
@@ -122,10 +126,13 @@ public class ScoreBoard {
             e.printStackTrace();
         }
 
+
+
         leerPuntuaciones();
     }
 
     void leerPuntuaciones() {
+
         try {
             Scanner scanner = new Scanner(new File("scores.txt"));
             scanner.useDelimiter(",|\n");
@@ -134,8 +141,28 @@ public class ScoreBoard {
                 String nombre = scanner.next();
                 int puntos = scanner.nextInt();
 
-                scoreList.add(new Score(nombre, puntos));
+
+                //scoreList.add(new Score(nombre, puntos));
+                ordenador.add(new Score(nombre, puntos));
             }
+
+
+            while(ordenador.size() > 0){
+                int posNotaMax = 0;
+                for (int i = 0; i < ordenador.size(); i++) {
+                    if(ordenador.get(i).puntuacion > ordenador.get(posNotaMax).puntuacion){
+                        posNotaMax = i;
+                    }
+
+                }
+
+                scoreList.add(ordenador.get(posNotaMax));
+                ordenador.remove(posNotaMax);
+
+            }
+
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

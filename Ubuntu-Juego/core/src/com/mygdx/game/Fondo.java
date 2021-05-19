@@ -25,6 +25,7 @@ public class Fondo {
             z = 640;
         }
 
+
         public void update(){
             if (gameover && cambioVelocidad.suena()) {
                 z -= quitar;
@@ -42,6 +43,10 @@ public class Fondo {
 
     Fondo(){
         fondoBacks.add(new FondoBack());
+    }
+
+    static void reiniciarFondo (){
+        FondoBack.quitar = 1;
     }
 
     public void update(){

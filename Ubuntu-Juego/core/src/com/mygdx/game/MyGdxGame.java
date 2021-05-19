@@ -46,12 +46,17 @@ public class MyGdxGame extends ApplicationAdapter {
 
     void inicializarJuego(){
         fondo = new Fondo();
+        Fondo.reiniciarFondo();
         jugador = new Jugador();
         enemigos = new ArrayList<>();
         temporizadorNuevoAlien = new Temporizador(120);
         disparosAEliminar = new ArrayList<>();
         enemigosAEliminar = new ArrayList<>();
         scoreboard = new ScoreBoard();
+        Enemigo.reiniciarEnemigo();
+
+
+
 
         gameover = false;
     }
@@ -96,7 +101,9 @@ public class MyGdxGame extends ApplicationAdapter {
                     gameover = true;
 
                     fondo.gameover();
-                    scoreboard.guardarPuntuacion(jugador.puntos);
+
+
+
                 }
             }
 

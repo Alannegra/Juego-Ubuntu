@@ -20,15 +20,22 @@ public class Enemigo {
     boolean boom = false;
     boolean palanca = false;
 
-    Temporizador temporizadorRespawn = new Temporizador(60, false);
+    Temporizador temporizadorRespawn = new Temporizador(120, false);
+
 
     Enemigo() {
+
+
+
         x = 640;
         y = Utils.random.nextInt(480);
         w = 64 * 2;
         h = 48 * 2;
         vx = -2;
         vy = 0;
+
+
+
     }
 
     public void update() {
@@ -36,6 +43,10 @@ public class Enemigo {
         x += vx;
         Z = (int)z;
         if (cambioVelocidad.suena()) {
+
+
+
+
 
             if(palanca){
                 vy = -Utils.random.nextInt( Z + Z/2) + z;
@@ -50,9 +61,9 @@ public class Enemigo {
             vx = -(Utils.random.nextInt(3)+z);
 
 
+            }
 
 
-        }
 
 
         if (temporizadorRespawn.suena()) {
@@ -81,6 +92,10 @@ public class Enemigo {
         //batch.draw(animacion.getFrame(Temporizador.tiempoJuego), x, y, w, h);
     }
 
+
+    static void reiniciarEnemigo (){
+        z = 1;
+    }
 
     public void morir(Jugador jugador) {
         muerto = true;
