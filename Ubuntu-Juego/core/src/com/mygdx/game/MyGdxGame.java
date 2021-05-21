@@ -1,14 +1,15 @@
 package com.mygdx.game;
 
-// https://github.com/uriloop?tab=repositories
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,10 @@ import java.util.List;
 public class MyGdxGame extends ApplicationAdapter {
     SpriteBatch batch;
     BitmapFont bitmapFont;
+
+    Musica musica;
+
+
 
     Jugador jugador;
 
@@ -48,6 +53,7 @@ public class MyGdxGame extends ApplicationAdapter {
         fondo = new Fondo();
         Fondo.reiniciarFondo();
         jugador = new Jugador();
+        musica = new Musica();
         enemigos = new ArrayList<>();
         temporizadorNuevoAlien = new Temporizador(120);
         disparosAEliminar = new ArrayList<>();
@@ -55,10 +61,11 @@ public class MyGdxGame extends ApplicationAdapter {
         scoreboard = new ScoreBoard();
         Enemigo.reiniciarEnemigo();
 
-
+       musica.musicbackground(false);
 
 
         gameover = false;
+
     }
 
     void update() {
@@ -83,12 +90,11 @@ public class MyGdxGame extends ApplicationAdapter {
                     enemigosAEliminar.add(enemigo);
                     jugador.puntos+= 10;
                     jugador.strake(0.5f);
-
-
-
                     enemigo.strake(0.5f);
-
                     fondo.strake();
+
+                    musica.sounddead();
+
 
                     break;
                 }
@@ -101,6 +107,8 @@ public class MyGdxGame extends ApplicationAdapter {
                     gameover = true;
 
                     fondo.gameover();
+                    musica.musicbackground(true);
+
 
 
 

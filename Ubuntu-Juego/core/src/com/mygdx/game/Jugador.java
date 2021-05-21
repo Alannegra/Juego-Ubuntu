@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jugador {
+    Musica musica = new Musica();
     Animacion animacion = new Animacion(6f, true, "frost.png", "frost2.png", "frost3.png","frost4.png","frost5.png" );
     float x, y, w, h, v;
     List<Disparo> disparos = new ArrayList<>();
@@ -37,6 +38,7 @@ public class Jugador {
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && temporizadorFireRate.suena() && !muerto) {
             disparos.add(new Disparo(x + w / 2 + 10, y + h -25));
+            musica.soundshot();
         }
 
         if (x < 0) x = 0;
