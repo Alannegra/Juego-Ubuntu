@@ -15,11 +15,11 @@ com/mygdx/game/Temporizador.java
  com.mygdx.game.Temporizador
 com/mygdx/game/Disparo.java
  com.mygdx.game.Disparo
-com/mygdx/game/Jugador.java
- com.mygdx.game.Jugador
-com/mygdx/game/MyGdxGame.java
- com.mygdx.game.MyGdxGame
-com/mygdx/game/Enemigo.java
- com.mygdx.game.Enemigo
 com/mygdx/game/Musica.java
  com.mygdx.game.Musica
+com/mygdx/game/Jugador.java
+ com.mygdx.game.Jugador
+com/mygdx/game/Enemigo.java
+ com.mygdx.game.Enemigo
+com/mygdx/game/MyGdxGame.java
+ com.mygdx.game.MyGdxGame

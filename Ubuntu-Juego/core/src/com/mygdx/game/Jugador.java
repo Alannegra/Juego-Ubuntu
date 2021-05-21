@@ -14,21 +14,31 @@ public class Jugador {
     List<Disparo> disparos = new ArrayList<>();
     int vidas = 3;
     int puntos = 0;
+    float z = 1;
     boolean muerto = false;
+
     Temporizador temporizadorFireRate = new Temporizador(20);
     Temporizador temporizadorRespawn = new Temporizador(120, false);
 
 
 
     Jugador() {
+
+
+
         x = 100;
         y = 100;
         w = 43 * 2;
         h = 21 * 2;
         v = 5;
+
+
     }
 
+
+
     void update() {
+        temporizadorFireRate.frecuencia = 20-z;
         for (Disparo disparo : disparos) disparo.update();
 
         if (Gdx.input.isKeyPressed(Input.Keys.D)) x += v;
@@ -64,6 +74,7 @@ public class Jugador {
     public void strake(float quitar) {
 
         v += quitar ;
+        z += 0.5;
 
     }
 

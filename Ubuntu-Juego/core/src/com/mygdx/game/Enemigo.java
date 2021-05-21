@@ -39,6 +39,8 @@ public class Enemigo {
     }
 
     public void update() {
+
+
         y += vy;
         x += vx;
         Z = (int)z;

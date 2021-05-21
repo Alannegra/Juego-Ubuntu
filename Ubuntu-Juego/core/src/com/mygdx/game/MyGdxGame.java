@@ -34,6 +34,7 @@ public class MyGdxGame extends ApplicationAdapter {
     Temporizador temporizadorNuevoAlien;
     private ScoreBoard scoreboard;
     private boolean gameover;
+    public int z = 0;
 
     @Override
     public void create() {
@@ -60,6 +61,8 @@ public class MyGdxGame extends ApplicationAdapter {
         enemigosAEliminar = new ArrayList<>();
         scoreboard = new ScoreBoard();
         Enemigo.reiniciarEnemigo();
+        z = 0;
+
 
        musica.musicbackground(false);
 
@@ -69,6 +72,7 @@ public class MyGdxGame extends ApplicationAdapter {
     }
 
     void update() {
+
 
         Temporizador.tiempoJuego += 1;
 
@@ -92,6 +96,8 @@ public class MyGdxGame extends ApplicationAdapter {
                     jugador.strake(0.5f);
                     enemigo.strake(0.5f);
                     fondo.strake();
+                    z+= 2;
+                    temporizadorNuevoAlien.frecuencia = 120-z ;
 
                     musica.sounddead();
 
@@ -179,6 +185,7 @@ public class MyGdxGame extends ApplicationAdapter {
         }
         bitmapFont.draw(batch, "" + jugador.vidas, 590, 440);
         bitmapFont.draw(batch, "" + jugador.puntos, 30, 440);
+        bitmapFont.draw(batch, "" + z, 300, 440);
 
         if (gameover){
 
