@@ -9,7 +9,7 @@ public class Musica {
 
 
     Music music,music2  ;
-    Sound sound,sound2,sound3  ;
+    Sound sound,sound2,sound3,sound4  ;
 
 
 
@@ -19,6 +19,8 @@ public class Musica {
         sound  = Gdx.audio.newSound(Gdx.files.internal("pistol.wav"));
         sound2  = Gdx.audio.newSound(Gdx.files.internal("shotgun.wav"));
         sound3 = Gdx.audio.newSound(Gdx.files.internal("death.ogg"));
+        sound4 = Gdx.audio.newSound(Gdx.files.internal("craft.ogg"));
+
         //rifle.wav
         //shotgun.wav
         //pistol.wav
@@ -50,6 +52,12 @@ public class Musica {
         long id = sound3.play(1.0f);
         sound3.setPitch(id,1);
         sound3.setLooping(id,false);
+
+    }
+    public void soundhit(){
+        long id = sound4.play(1.0f);
+        sound4.setPitch(id,1);
+        sound4.setLooping(id,false);
 
     }
 

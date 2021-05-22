@@ -59,6 +59,7 @@ public class Jugador {
         if (temporizadorRespawn.suena()) {
             muerto = false;
         }
+
     }
 
     void render(SpriteBatch batch) {

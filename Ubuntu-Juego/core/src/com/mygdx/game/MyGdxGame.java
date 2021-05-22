@@ -25,16 +25,28 @@ public class MyGdxGame extends ApplicationAdapter {
     Jugador jugador;
 
     Fondo fondo;
+    Explosion explosion;
 
     List<Enemigo> enemigos = new ArrayList<>();
+    List<Explosion> enemigosEx = new ArrayList<>();
+    List<Explosion> enemigosExdelete = new ArrayList<>();
+    List<Enemigo> enemigosDaño = new ArrayList<>();
+    List<Enemigo> enemigosDañoAElimnar = new ArrayList<>();
     List<Disparo> disparosAEliminar = new ArrayList<>();
     List<Enemigo> enemigosAEliminar = new ArrayList<>();
 
 
     Temporizador temporizadorNuevoAlien;
+    Temporizador temporizadorEXPLOSION;
+    Temporizador temporizadorDaño;
     private ScoreBoard scoreboard;
     private boolean gameover;
     public int z = 0;
+    public float x = 0;
+    public float y = 0;
+    public boolean xd = false;
+    public boolean xd2 = false;
+
 
     @Override
     public void create() {
@@ -57,6 +69,9 @@ public class MyGdxGame extends ApplicationAdapter {
         musica = new Musica();
         enemigos = new ArrayList<>();
         temporizadorNuevoAlien = new Temporizador(120);
+        temporizadorEXPLOSION = new Temporizador(60);
+        temporizadorDaño = new Temporizador(60);
+
         disparosAEliminar = new ArrayList<>();
         enemigosAEliminar = new ArrayList<>();
         scoreboard = new ScoreBoard();
@@ -81,9 +96,31 @@ public class MyGdxGame extends ApplicationAdapter {
 
         if (temporizadorNuevoAlien.suena()) enemigos.add(new Enemigo());
 
+
         if(!gameover) {
             jugador.update();
+
         }
+
+        if(xd){
+            for (Enemigo enemigo : enemigosDaño) {
+                enemigo.morir(jugador);
+                enemigosDañoAElimnar.add(enemigo);
+            }
+        }
+
+        if(temporizadorDaño.suena()){
+            xd= false;
+            for (Enemigo enemigo : enemigosDañoAElimnar) {
+                enemigosDaño.remove(enemigo);
+            }
+
+        }
+
+
+
+
+
 
         for (Enemigo enemigo : enemigos) enemigo.update();              // enemigos.forEach(Enemigo::update);
 
@@ -92,6 +129,7 @@ public class MyGdxGame extends ApplicationAdapter {
                 if (Utils.solapan(disparo.x, disparo.y, disparo.w, disparo.h, enemigo.x, enemigo.y, enemigo.w, enemigo.h)) {
                     disparosAEliminar.add(disparo);
                     enemigosAEliminar.add(enemigo);
+
                     jugador.puntos+= 10;
                     jugador.strake(0.5f);
                     enemigo.strake(0.5f);
@@ -101,14 +139,23 @@ public class MyGdxGame extends ApplicationAdapter {
 
                     musica.sounddead();
 
+                    enemigosEx.add(new Explosion(enemigo.x,enemigo.y));
+
+                   // explosion = new Explosion(enemigo.x,enemigo.y);
+
 
                     break;
                 }
+
             }
 
             if (!jugador.muerto && Utils.solapan(enemigo.x, enemigo.y, enemigo.w, enemigo.h, jugador.x, jugador.y, jugador.w, jugador.h)) {
                 jugador.morir();
-                enemigo.morir(jugador);
+                xd =true;
+                enemigosDaño.add(enemigo);
+
+                musica.soundhit();
+
                 if (jugador.vidas == 0){
                     gameover = true;
 
@@ -134,13 +181,15 @@ public class MyGdxGame extends ApplicationAdapter {
 
 
             //----------------------ANIMACION-MUERTE-----------------------------------
-            if(enemigo.boom){
 
 
-                enemigos.remove(enemigo);
 
-            }
-            enemigo.boomir();
+
+            enemigos.remove(enemigo);
+
+
+
+
             //------------------------ANIMACION-MUERTE---------------------------------
 
 
@@ -149,6 +198,8 @@ public class MyGdxGame extends ApplicationAdapter {
         // enemigosAEliminar.forEach(enemigo -> enemigos.remove(enemigo));
         disparosAEliminar.clear();
         enemigosAEliminar.clear();
+        enemigosDañoAElimnar.clear();
+
 
         if(gameover) {
             int result = scoreboard.update(jugador.puntos);
@@ -160,6 +211,9 @@ public class MyGdxGame extends ApplicationAdapter {
         }
 
 
+
+
+
     }
 
     @Override
@@ -167,7 +221,13 @@ public class MyGdxGame extends ApplicationAdapter {
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+
+
         update();
+
+
+
+
 
         batch.begin();
 
@@ -175,7 +235,38 @@ public class MyGdxGame extends ApplicationAdapter {
 
         jugador.render(batch);
 
+        for (Explosion explosion : enemigosEx){
+
+
+                explosion.render(batch);
+
+            enemigosExdelete.add(explosion);
+
+
+
+
+        }
+        if(temporizadorEXPLOSION.suena()){
+
+
+
+
+        for(Explosion explosion : enemigosExdelete){
+
+                enemigosEx.remove(explosion);
+
+
+        }
+        }
+
+        enemigosExdelete.clear();
+
+
+
+
         for (Enemigo enemigo : enemigos){
+
+
 
             if(enemigo.boom){
                 bitmapFont.draw(batch, "+10" , enemigo.x + 35, enemigo.y);
@@ -194,14 +285,24 @@ public class MyGdxGame extends ApplicationAdapter {
 
         if(jugador.vidas == 0) bitmapFont.draw(batch, "GAME OVER" , 240, 200);
 
+
+
         for (Enemigo enemigo : enemigosAEliminar){
 
 
-            //------------------------ANIMACION-MUERTE---------------------------------
-            if(!enemigo.ani){
-                enemigo.ani = true;
 
+
+            //------------------------ANIMACION-MUERTE---------------------------------
+
+            if(enemigo.boom){
+
+
+
+                bitmapFont.draw(batch, "+10" , enemigo.x + 35, enemigo.y);
             }
+
+
+
             //------------------------ANIMACION-MUERTE---------------------------------
 
         }

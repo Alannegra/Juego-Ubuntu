@@ -9,7 +9,7 @@ public class Enemigo {
     Animacion animacion4 = new Animacion(8f, true, "nimbus_0.png","shoot.png");
 
 
-
+    Musica musica = new Musica();
     float x, y, w, h, vx, vy;
     static float z = 1;
     int Z;
@@ -20,7 +20,7 @@ public class Enemigo {
     boolean boom = false;
     boolean palanca = false;
 
-    Temporizador temporizadorRespawn = new Temporizador(120, false);
+    Temporizador temporizadorRespawn = new Temporizador(60, false);
 
 
     Enemigo() {
@@ -38,6 +38,8 @@ public class Enemigo {
 
     }
 
+
+
     public void update() {
 
 
@@ -45,9 +47,6 @@ public class Enemigo {
         x += vx;
         Z = (int)z;
         if (cambioVelocidad.suena()) {
-
-
-
 
 
             if(palanca){
@@ -75,18 +74,19 @@ public class Enemigo {
         if (y < 0) y = 0;
 
         if (y > 390) y = 390;
+
+
     }
 
     void render(SpriteBatch batch) {
 
         if (muerto){
             //X y Y DEL JUGADOR
-            batch.draw(animacion2.getFrame(Temporizador.tiempoJuego), x, y, w, h);
-        }else if(boom){
 
-            batch.draw(animacion4.getFrame(Temporizador.tiempoJuego), x, y, w, h);
+            batch.draw(animacion2.getFrame(Temporizador.tiempoJuego), x, y, w, h);
 
         }else{
+
             batch.draw(animacion.getFrame(Temporizador.tiempoJuego), x, y, w, h);
         }
 
@@ -104,9 +104,14 @@ public class Enemigo {
         temporizadorRespawn.activar();
 
         if (muerto){
-            y = jugador.y;
-            x = jugador.x;
+
+                y = jugador.y;
+                x = jugador.x;
+
+
         }
+
+
     }
 
     public void strake(float quitar) {
