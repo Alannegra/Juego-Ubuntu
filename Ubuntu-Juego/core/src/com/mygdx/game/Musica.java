@@ -3,6 +3,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
+import java.util.Random;
 
 
 public class Musica {
@@ -10,6 +11,9 @@ public class Musica {
 
     Music music,music2  ;
     Sound sound,sound2,sound3,sound4  ;
+    Random random;
+    Sound[] sounds,soundsX;
+    int x =0;
 
 
 
@@ -20,6 +24,23 @@ public class Musica {
         sound2  = Gdx.audio.newSound(Gdx.files.internal("shotgun.wav"));
         sound3 = Gdx.audio.newSound(Gdx.files.internal("death.ogg"));
         sound4 = Gdx.audio.newSound(Gdx.files.internal("craft.ogg"));
+
+        sounds = new Sound[7];
+        soundsX = new Sound[4];
+
+        sounds[0] = Gdx.audio.newSound(Gdx.files.internal("monster-11.ogg"));
+        sounds[1] = Gdx.audio.newSound(Gdx.files.internal("monster-15.ogg"));
+        sounds[2] = Gdx.audio.newSound(Gdx.files.internal("monster-16.ogg"));
+        sounds[3] = Gdx.audio.newSound(Gdx.files.internal("monster-1.ogg"));
+        sounds[4] = Gdx.audio.newSound(Gdx.files.internal("monster-9.ogg"));
+        sounds[5] = Gdx.audio.newSound(Gdx.files.internal("monster-10.ogg"));
+        sounds[6] = Gdx.audio.newSound(Gdx.files.internal("monster-13.ogg"));
+
+
+
+        random = new Random();
+
+        //craft.ogg
 
         //rifle.wav
         //shotgun.wav
@@ -49,12 +70,21 @@ public class Musica {
 
 
     public void sounddead(){
-        long id = sound3.play(1.0f);
-        sound3.setPitch(id,1);
-        sound3.setLooping(id,false);
+
+        x = random.nextInt(7);
+        long id = sounds[x].play(1.0f);
+        sounds[x].setPitch(id,1);
+        sounds[x].setLooping(id,false);
+
+        //long id = sound3.play(1.0f);
+        //sound3.setPitch(id,1);
+        //sound3.setLooping(id,false);
 
     }
+
     public void soundhit(){
+
+
         long id = sound4.play(1.0f);
         sound4.setPitch(id,1);
         sound4.setLooping(id,false);

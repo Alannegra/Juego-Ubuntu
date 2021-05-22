@@ -19,9 +19,9 @@ com/mygdx/game/ScoreBoard.java
  com.mygdx.game.ScoreBoard$Score
 com/mygdx/game/Jugador.java
  com.mygdx.game.Jugador
-com/mygdx/game/Musica.java
- com.mygdx.game.Musica
-com/mygdx/game/Enemigo.java
- com.mygdx.game.Enemigo
 com/mygdx/game/MyGdxGame.java
  com.mygdx.game.MyGdxGame
+com/mygdx/game/Enemigo.java
+ com.mygdx.game.Enemigo
+com/mygdx/game/Musica.java
+ com.mygdx.game.Musica
