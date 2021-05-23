@@ -47,9 +47,9 @@ public class Meteor {
     }
 
 
-    void strake() {
+     void strake(float quitar) {
 
-        z +=1;
+        z +=quitar;
 
     }
 }

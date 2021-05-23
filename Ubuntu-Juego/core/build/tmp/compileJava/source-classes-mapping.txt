@@ -5,8 +5,8 @@ com/mygdx/game/ScoreBoard.java
  com.mygdx.game.ScoreBoard$Score
 com/mygdx/game/Temporizador.java
  com.mygdx.game.Temporizador
-com/mygdx/game/Meteor.java
- com.mygdx.game.Meteor
+com/mygdx/game/Enemigo.java
+ com.mygdx.game.Enemigo
 com/mygdx/game/ScoreBoard2.java
  com.mygdx.game.ScoreBoard2
  com.mygdx.game.ScoreBoard2$Score
@@ -21,9 +21,9 @@ com/mygdx/game/Fondo.java
  com.mygdx.game.Fondo$FondoBack
 com/mygdx/game/Jugador.java
  com.mygdx.game.Jugador
-com/mygdx/game/MyGdxGame.java
- com.mygdx.game.MyGdxGame
-com/mygdx/game/Enemigo.java
- com.mygdx.game.Enemigo
 com/mygdx/game/Musica.java
  com.mygdx.game.Musica
+com/mygdx/game/Meteor.java
+ com.mygdx.game.Meteor
+com/mygdx/game/MyGdxGame.java
+ com.mygdx.game.MyGdxGame

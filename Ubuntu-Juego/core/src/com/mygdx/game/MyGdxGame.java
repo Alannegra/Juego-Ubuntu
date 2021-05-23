@@ -144,7 +144,7 @@ public class MyGdxGame extends ApplicationAdapter {
                     jugador.strake(0.5f);
                     enemigo.strake(0.5f);
                     fondo.strake();
-                    meteor.strake();
+                    meteor.strake(1f);
                     z+= 2;
                     temporizadorNuevoAlien.frecuencia = 120-z ;
                     temporizadorNuevoMeteorito.frecuencia = 120-z ;
@@ -170,7 +170,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
                 if (jugador.vidas == 0){
                     gameover = true;
-
+                    for (Disparo disparo : jugador.disparos)disparosAEliminar.add(disparo);
                     fondo.gameover();
                     musica.musicbackground(true);
                 }
@@ -193,9 +193,11 @@ public class MyGdxGame extends ApplicationAdapter {
 
                 if (jugador.vidas == 0){
                     gameover = true;
-
+                    for (Disparo disparo : jugador.disparos)disparosAEliminar.add(disparo);
                     fondo.gameover();
                     musica.musicbackground(true);
+
+
                 }
 
             }
@@ -235,6 +237,7 @@ public class MyGdxGame extends ApplicationAdapter {
         }
 
         // enemigosAEliminar.forEach(enemigo -> enemigos.remove(enemigo));
+
         disparosAEliminar.clear();
         enemigosAEliminar.clear();
         meteorAEliminar.clear();
