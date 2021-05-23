@@ -7,9 +7,11 @@ public class Enemigo {
     Animacion animacion2 = new Animacion(8f, true, "attack_1.png","attack_2.png","attack_3.png","attack_4.png","attack_5.png","attack_6.png","attack_7.png");
     Animacion animacion3 = new Animacion(8f, true, "idle_1.png","idle_2.png","idle_3.png","idle_4.png","idle_5.png","idle_6.png");
     Animacion animacion4 = new Animacion(8f, true, "nimbus_0.png","shoot.png");
+    Animacion animacion5 = new Animacion(8f, true, "meteor1.png","meteor2.png","meteor3.png","meteor4.png","meteor5.png","meteor6.png","meteor7.png","meteor8.png");
 
 
-    Musica musica = new Musica();
+
+
     float x, y, w, h, vx, vy;
     static float z = 1;
     int Z;

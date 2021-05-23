@@ -72,7 +72,7 @@ public class Musica {
     public void sounddead(){
 
         x = random.nextInt(7);
-        long id = sounds[x].play(1.0f);
+        long id = sounds[x].play(3.0f);
         sounds[x].setPitch(id,1);
         sounds[x].setLooping(id,false);
 
@@ -85,14 +85,14 @@ public class Musica {
     public void soundhit(){
 
 
-        long id = sound4.play(1.0f);
+        long id = sound4.play(3.0f);
         sound4.setPitch(id,1);
         sound4.setLooping(id,false);
 
     }
 
     public void soundshot(){
-        long id = sound.play(0.1f);
+        long id = sound.play(0.5f);
         sound.setPitch(id,1);
         sound.setLooping(id,false);
 
