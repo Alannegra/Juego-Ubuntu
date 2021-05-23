@@ -10,7 +10,7 @@ public class Musica {
 
 
     Music music,music2  ;
-    Sound sound,sound2,sound3,sound4  ;
+    Sound sound,sound2,sound3,sound4,sound5  ;
     Random random;
     Sound[] sounds,soundsX;
     int x =0;
@@ -23,7 +23,8 @@ public class Musica {
         sound  = Gdx.audio.newSound(Gdx.files.internal("pistol.wav"));
         sound2  = Gdx.audio.newSound(Gdx.files.internal("shotgun.wav"));
         sound3 = Gdx.audio.newSound(Gdx.files.internal("death.ogg"));
-        sound4 = Gdx.audio.newSound(Gdx.files.internal("craft.ogg"));
+        sound4 = Gdx.audio.newSound(Gdx.files.internal("impactcrunch03.ogg"));
+        sound5 = Gdx.audio.newSound(Gdx.files.internal("Fire impact 1.wav"));
 
         sounds = new Sound[7];
         soundsX = new Sound[4];
@@ -38,6 +39,7 @@ public class Musica {
 
 
 
+        //impactcrunch04.mp3.flac
         random = new Random();
 
         //craft.ogg
@@ -92,9 +94,17 @@ public class Musica {
     }
 
     public void soundshot(){
-        long id = sound.play(0.5f);
+        long id = sound.play(0.2f);
         sound.setPitch(id,1);
         sound.setLooping(id,false);
 
     }
+
+
+    public void soundmeteor() {
+        long id = sound5.play(3.0f);
+        sound5.setPitch(id,1);
+        sound5.setLooping(id,false);
+    }
+
 }

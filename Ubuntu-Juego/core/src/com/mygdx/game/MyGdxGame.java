@@ -189,7 +189,7 @@ public class MyGdxGame extends ApplicationAdapter {
                 //xdM =true;
                 //meteorDaño.add(meteor);
 
-                //musica.soundhit();
+                musica.soundmeteor();
 
                 if (jugador.vidas == 0){
                     gameover = true;
@@ -200,6 +200,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
             }
 
+            if (meteor.x < -100)
+                meteorAEliminar.add(meteor);
 
         }
 
